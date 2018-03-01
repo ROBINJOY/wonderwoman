@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Shesos</string>
+    <string name="she_sos">She SoS</string>
+    <string name="home_content">SheSoS need to access your contacts</string>
+    <string name="edittext_content">Enter the message</string>
+    <string name="uid_text">Enter the Unique ID</string>
+    <string name="proceed">Proceed >></string>
+    <string name="submit_button">Next</string>
+    <string name="uid_button">SET ID</string>
+    <string name="final_button">Submit</string>
+    <string name="exit_button">Exit</string>
+    <string name="instructions">Your custom message has been saved. The application will now run in the background. Press power button 3 times for sending message to your selected contacts. </string>
+</resources>
+
