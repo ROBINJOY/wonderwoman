@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.roninaks.tech.shesos.Home"
+    tools:layout_editor_absoluteY="81dp">
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginRight="39dp"
+        android:id="@+id/contact_search"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/submit_button"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="550dp" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="479dp"
+        android:layout_above="@+id/submit_button"
+        android:layout_below="@+id/contact_search"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:divider="@color/colorPrimaryDark"
+        android:dividerHeight="1px"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+
+</RelativeLayout>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+
+    <!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context="com.roninaks.tech.shesos.Home">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:text="@string/home_content"-->
+    <!--android:id="@+id/welcome_content"-->
+    <!--android:fontFamily="titilium"-->
+    <!--android:layout_marginTop="150dp"-->
+    <!--android:padding="20dp"-->
+    <!--android:textSize="20dp"-->
+    <!--android:textAlignment="center"-->
+    <!--android:textColor="#737373"-->
+    <!--/>-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:fontFamily="titilium"-->
+    <!--android:text="@string/proceed"-->
+    <!--android:layout_marginTop="400dp"-->
+    <!--android:textSize="20dp"-->
+    <!--android:textColor="@color/colorPrimaryDark"-->
+    <!--android:textAlignment="center"-->
+    <!--android:layout_below="@+id/welcome_content"-->
+    <!--android:id="@+id/proceed_button"-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:onClick="proceed"/>-->
+    <!--<ListView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="460dp"-->
+    <!--android:id="@+id/listview"-->
+    <!--android:layout_marginTop="50dp"-->
+    <!--android:divider="@color/colorPrimaryDark"-->
+    <!--android:dividerHeight="1px"-->
+    <!--android:paddingLeft="16dp"-->
+    <!--android:paddingRight="16dp"-->
+    <!--android:descendantFocusability="blocksDescendants"-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:choiceMode="none">-->
+    <!--</ListView>-->
+
+    <!--<Button-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="46dp"-->
+    <!--android:background="@color/colorPrimaryDark"-->
+    <!--android:text="@string/submit_button"-->
+    <!--android:textColor="#FFFFFF"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_alignBottom="@+id/listview"-->
+    <!--/>-->
+    <!--</android.support.constraint.ConstraintLayout>-->

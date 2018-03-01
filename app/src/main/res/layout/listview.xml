@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<TextView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:id="@+id/lview1"-->
+<!--android:paddingTop="10dp"-->
+<!--android:paddingBottom="10dp"-->
+<!--android:textSize="20sp"-->
+<!--android:textColor="#737373"-->
+<!--/>-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <CheckBox
+        android:id="@+id/contact_checkBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="290dp"
+        android:focusable="false"
+        android:clickable="false"
+        android:focusableInTouchMode="false"
+        android:layout_marginStart="290dp" />
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignBaseline="@+id/contact_checkBox"
+        android:layout_alignBottom="@+id/contact_checkBox"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="45dp"
+        android:paddingBottom="2dp"
+        android:focusable="false"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textViewName"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="45dp"
+        android:paddingTop="3dp"
+        android:textSize="20sp"
+        android:focusable="false"
+        android:textStyle="normal" />
+
+</RelativeLayout>
