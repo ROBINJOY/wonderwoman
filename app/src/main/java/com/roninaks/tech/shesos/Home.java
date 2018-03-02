@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +46,8 @@ public class Home extends Activity {
     TextView textView1, textView2;
     List<ContactModel> contact;
     List<ContactModel> temp;
-    int countPower = 0;
+    int limit = 0;
+    NumberPicker number_picker;
     SearchView searchView;
     public HashMap<String, String> dict = new HashMap<String, String>();
     @Override
@@ -66,6 +68,11 @@ public class Home extends Activity {
         searchView = (SearchView) findViewById(R.id.contact_search);
         Button button = findViewById(R.id.submit_button);
         button.setVisibility(View.INVISIBLE);
+
+        number_picker = (NumberPicker) findViewById(R.id.num_picker);
+        number_picker.setMaxValue(10);
+        number_picker.setMinValue(1);
+
         enablePermission();
         try {
             Thread.sleep(3000);
@@ -135,11 +142,15 @@ public class Home extends Activity {
 
         Button button = findViewById(R.id.submit_button);
         button.setVisibility(View.VISIBLE);
+        number_picker.setVisibility(View.VISIBLE);
 
 
+        number_picker.setOnValueChangedListener(new NumPicker());
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                limit = number_picker.getValue();
+                Toast.makeText(Home.this, "size--"+limit, Toast.LENGTH_LONG).show();
                 if (temp.get(position).isChecked){
                     dict.remove(String.valueOf(position));
                     Log.e("Selected Position","" + temp.get(position).pos);
@@ -148,8 +159,9 @@ public class Home extends Activity {
                     checkBox.setChecked(false);
                 }
                 else {
-                    if (dict.size() == 3) {
-                        Toast.makeText(Home.this, "Select max 3 contacts", Toast.LENGTH_LONG).show();
+
+                    if (dict.size() == limit) {
+                        Toast.makeText(Home.this, "Select max "+limit+" contacts", Toast.LENGTH_LONG).show();
                     }
                     else {
                         CheckBox checkBox = view.findViewById(R.id.contact_checkBox);
@@ -174,17 +186,23 @@ public class Home extends Activity {
                     @Override
                     public void onClick(View v) {
                         if (dict.size() > 0) {
-                            String emgncy_contacts = "";
-                            Iterator it = dict.entrySet().iterator();
-                            while (it.hasNext()) {
-                                Map.Entry pair = (Map.Entry)it.next();
-                                emgncy_contacts = emgncy_contacts.concat(pair.getValue() + ";");
+                            limit = number_picker.getValue();
+                            if (dict.size() == limit){
+                                String emgncy_contacts = "";
+                                Iterator it = dict.entrySet().iterator();
+                                while (it.hasNext()) {
+                                    Map.Entry pair = (Map.Entry)it.next();
+                                    emgncy_contacts = emgncy_contacts.concat(pair.getValue() + ";");
+                                }
+                                SharedPreferences stored_numbers = getSharedPreferences("label", 0);
+                                SharedPreferences.Editor mEditor = stored_numbers.edit();
+                                mEditor.putString("shesosno", emgncy_contacts).commit();
+                                Intent intent = new Intent(Home.this, ContactsGet.class);
+                                startActivity(intent);
                             }
-                            SharedPreferences stored_numbers = getSharedPreferences("label", 0);
-                            SharedPreferences.Editor mEditor = stored_numbers.edit();
-                            mEditor.putString("shesosno", emgncy_contacts).commit();
-                            Intent intent = new Intent(Home.this, ContactsGet.class);
-                            startActivity(intent);
+                            else {
+                                Toast.makeText(Home.this, "Select "+limit+" contacts", Toast.LENGTH_LONG).show();
+                            }
                         }
                         else {
                             Toast.makeText(Home.this, "Select atleast one contact", Toast.LENGTH_LONG).show();
@@ -228,7 +246,16 @@ public class Home extends Activity {
                     temp));
         }
     }
-
+    private class NumPicker implements NumberPicker.OnValueChangeListener {
+        @Override
+        public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+            //get new value and convert it to String
+            //if you want to use variable value elsewhere, declare it as a field
+            //of your main function
+//            String value = "" + newVal;
+            int range = newVal;
+        }
+    }
 
     public void enablePermission(){
         if (ContextCompat.checkSelfPermission(this,
@@ -292,7 +319,9 @@ public class Home extends Activity {
                     //send sms here call your method
                     SharedPreferences mPrefs = getSharedPreferences("label", 0);
                     String phoneNo = mPrefs.getString("shesosno", "");
-                    String msg = mPrefs.getString("shesosmsg", "Please help, I am in danger.");
+                    String msg_uid = mPrefs.getString("shesosuid", "");
+                    String msg_content = mPrefs.getString("shesosmsg", "Please help, I am in danger.");
+                    String msg = "UID: " + msg_uid + "\n" + "MESSAGE: "+ msg_content;
                     new KeyPressService().sendSMS(phoneNo,msg);
                 } else {
                     Log.e("Message Permission","Permission is revoked");
