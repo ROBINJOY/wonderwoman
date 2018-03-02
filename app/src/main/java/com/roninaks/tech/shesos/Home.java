@@ -186,17 +186,23 @@ public class Home extends Activity {
                     @Override
                     public void onClick(View v) {
                         if (dict.size() > 0) {
-                            String emgncy_contacts = "";
-                            Iterator it = dict.entrySet().iterator();
-                            while (it.hasNext()) {
-                                Map.Entry pair = (Map.Entry)it.next();
-                                emgncy_contacts = emgncy_contacts.concat(pair.getValue() + ";");
+                            limit = number_picker.getValue();
+                            if (dict.size() == limit){
+                                String emgncy_contacts = "";
+                                Iterator it = dict.entrySet().iterator();
+                                while (it.hasNext()) {
+                                    Map.Entry pair = (Map.Entry)it.next();
+                                    emgncy_contacts = emgncy_contacts.concat(pair.getValue() + ";");
+                                }
+                                SharedPreferences stored_numbers = getSharedPreferences("label", 0);
+                                SharedPreferences.Editor mEditor = stored_numbers.edit();
+                                mEditor.putString("shesosno", emgncy_contacts).commit();
+                                Intent intent = new Intent(Home.this, ContactsGet.class);
+                                startActivity(intent);
                             }
-                            SharedPreferences stored_numbers = getSharedPreferences("label", 0);
-                            SharedPreferences.Editor mEditor = stored_numbers.edit();
-                            mEditor.putString("shesosno", emgncy_contacts).commit();
-                            Intent intent = new Intent(Home.this, ContactsGet.class);
-                            startActivity(intent);
+                            else {
+                                Toast.makeText(Home.this, "Select "+limit+" contacts", Toast.LENGTH_LONG).show();
+                            }
                         }
                         else {
                             Toast.makeText(Home.this, "Select atleast one contact", Toast.LENGTH_LONG).show();
