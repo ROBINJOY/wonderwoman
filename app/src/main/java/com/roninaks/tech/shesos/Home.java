@@ -150,7 +150,6 @@ public class Home extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 limit = number_picker.getValue();
-                Toast.makeText(Home.this, "size--"+limit, Toast.LENGTH_LONG).show();
                 if (temp.get(position).isChecked){
                     dict.remove(String.valueOf(position));
                     Log.e("Selected Position","" + temp.get(position).pos);

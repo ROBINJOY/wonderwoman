@@ -20,7 +20,7 @@ public class SetUID extends Activity {
         SharedPreferences stored_uid = getSharedPreferences("label", 0);
         String mString = stored_uid.getString("shesosuid", "");
         Log.e("UID", "uid"+mString);
-        Toast.makeText(SetUID.this, ""+mString, Toast.LENGTH_LONG).show();
+//        Toast.makeText(SetUID.this, ""+mString, Toast.LENGTH_LONG).show();
 
         if (mString.isEmpty()){
             DialogUID dialogBox = new DialogUID(SetUID.this);
