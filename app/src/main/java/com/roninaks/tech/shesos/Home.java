@@ -319,7 +319,9 @@ public class Home extends Activity {
                     //send sms here call your method
                     SharedPreferences mPrefs = getSharedPreferences("label", 0);
                     String phoneNo = mPrefs.getString("shesosno", "");
-                    String msg = mPrefs.getString("shesosmsg", "Please help, I am in danger.");
+                    String msg_uid = mPrefs.getString("shesosuid", "");
+                    String msg_content = mPrefs.getString("shesosmsg", "Please help, I am in danger.");
+                    String msg = "UID: " + msg_uid + "\n" + "MESSAGE: "+ msg_content;
                     new KeyPressService().sendSMS(phoneNo,msg);
                 } else {
                     Log.e("Message Permission","Permission is revoked");

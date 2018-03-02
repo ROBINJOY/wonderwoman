@@ -58,8 +58,9 @@ public class KeyPressService extends Service {
                                 Log.e("Message:", "Message sending hit " + countPower);
                                 SharedPreferences mPrefs = getSharedPreferences("label", 0);
                                 String phoneNo = mPrefs.getString("shesosno", "");
-                                String msg = mPrefs.getString("shesosmsg", "Please help, I am in danger.");
-                                Log.e("Phone no",phoneNo);
+                                String msg_uid = mPrefs.getString("shesosuid", "");
+                                String msg_content = mPrefs.getString("shesosmsg", "Please help, I am in danger.");
+                                String msg = "UID: " + msg_uid + "\n" + "MESSAGE: "+ msg_content;                                Log.e("Phone no",phoneNo);
                                 sendSMS(phoneNo, msg);
                                 countPower = 0;
                             } else {
